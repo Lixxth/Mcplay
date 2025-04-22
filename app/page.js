@@ -20,7 +20,7 @@ export default function Page() {
             href="https://shipfa.st/docs"
             target="_blank"
           >
-            Documentation & tutorials{" "}
+            {" "}
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 20 20"
