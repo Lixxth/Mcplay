@@ -11,4 +11,12 @@ const nextConfig = {
   },
 };
 
-module.exports = nextConfig;
+const withPWA = require("next-pwa")({
+  dest: "public",
+  register: true,
+  skipWaiting: true,
+  disable: process.env.NODE_ENV === "development",
+});
+
+// Exportar una sola configuración combinada
+module.exports = withPWA(nextConfig);

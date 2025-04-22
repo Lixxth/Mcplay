@@ -1,5 +1,6 @@
 import Link from "next/link";
 import ButtonSignin from "@/components/ButtonSignin";
+import OfflineButton from "@/components/OfflineButton";
 
 export default function Page() {
   return (
@@ -34,6 +35,13 @@ export default function Page() {
               />
             </svg>
           </a>
+
+          <button className="bg-white text-red-600 hover:bg-red-100  shadow-lg shadow-red-700 py-3 px-6 rounded-lg text-lg animate-fadeUp">
+               Pruebala Ahora
+             </button>
+               <OfflineButton className="bg-white text-red-600 hover:bg-red-100 shadow-lg shadow-red-700 py-3 px-6 rounded-lg text-lg animate-fadeUp">
+                  
+               </OfflineButton>
 
           <Link href="/blog" className="link link-hover text-sm">
             Fancy a blog?
