@@ -28,7 +28,7 @@ const SplashScreen = () => {
         </div>
       </div>
       <h1 className="text-4xl font-bold text-red-600 animate-pulse">
-        McDonald's
+        McDonald&apos;s
       </h1>
     </div>
   );
