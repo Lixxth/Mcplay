@@ -1,13 +1,7 @@
 import Image from "next/image";
  
  
- export async function getStaticProps(context) {
-   const url = process.env.NEXTAUTH_URL ?? "http://localhost:3000/";
-   return {
-     props: {
-       url,
-     },// will be passed to the page component as props
-   };
+
  }
  export default function iOS({ url = "http://localhost:3000/" }) {
    return (
