@@ -2,7 +2,7 @@ import Image from "next/image";
  
  
 
- }
+ 
  export default function iOS({ url = "http://localhost:3000/" }) {
    return (
      <div title="DemoPage" description="this is a demo page">
