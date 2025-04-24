@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+import { TrophyIcon, ClockIcon, ArrowLeftIcon } from '@heroicons/react/24/solid';
 
 const CatchFriesGame = () => {
   const router = useRouter();
@@ -120,9 +121,20 @@ const CatchFriesGame = () => {
         <h1 className="text-2xl md:text-3xl font-bold text-[#D6001C] mb-2">
           ¡Atrapa las Papas!
         </h1>
-        <p className="text-lg md:text-xl font-bold text-[#FFCC00]">
-          Puntos: {score} | Tiempo: {timeLeft}s
-        </p>
+        <div className="flex items-center justify-center gap-4">
+          <div className="flex items-center gap-2">
+            <TrophyIcon className="w-6 h-6 text-[#FFCC00]" />
+            <p className="text-lg md:text-xl font-bold text-[#FFCC00]">
+              Puntos: {score}
+            </p>
+          </div>
+          <div className="flex items-center gap-2">
+            <ClockIcon className="w-6 h-6 text-[#FFCC00]" />
+            <p className="text-lg md:text-xl font-bold text-[#FFCC00]">
+              Tiempo: {timeLeft}s
+            </p>
+          </div>
+        </div>
       </div>
 
       {showReward ? (
@@ -153,8 +165,9 @@ const CatchFriesGame = () => {
           <p className="text-lg md:text-xl mb-4">Has ganado {score} puntos</p>
           <button
             onClick={handleReturnToMenu}
-            className="w-full md:w-auto bg-[#D6001C] text-white font-bold py-3 px-8 rounded-lg hover:bg-[#B30000] transition-colors"
+            className="w-full md:w-auto bg-[#D6001C] text-white font-bold py-3 px-8 rounded-lg hover:bg-[#B30000] transition-colors flex items-center justify-center gap-2"
           >
+            <ArrowLeftIcon className="w-5 h-5" />
             Regresar al menú
           </button>
         </div>
@@ -167,14 +180,16 @@ const CatchFriesGame = () => {
           <div className="flex flex-col md:flex-row gap-4 justify-center">
             <button
               onClick={showRewardScreen}
-              className="w-full md:w-auto bg-[#FFCC00] text-[#D6001C] font-bold py-3 px-8 rounded-lg hover:bg-[#FFD700] transition-colors"
+              className="w-full md:w-auto bg-[#FFCC00] text-[#D6001C] font-bold py-3 px-8 rounded-lg hover:bg-[#FFD700] transition-colors flex items-center justify-center gap-2"
             >
+              <TrophyIcon className="w-5 h-5" />
               Ver Recompensa
             </button>
             <button
               onClick={handleReturnToMenu}
-              className="w-full md:w-auto bg-[#D6001C] text-white font-bold py-3 px-8 rounded-lg hover:bg-[#B30000] transition-colors"
+              className="w-full md:w-auto bg-[#D6001C] text-white font-bold py-3 px-8 rounded-lg hover:bg-[#B30000] transition-colors flex items-center justify-center gap-2"
             >
+              <ArrowLeftIcon className="w-5 h-5" />
               Regresar al menú
             </button>
           </div>

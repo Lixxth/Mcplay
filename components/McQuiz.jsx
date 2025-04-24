@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import { TrophyIcon, ClockIcon, ArrowLeftIcon, CheckCircleIcon, XCircleIcon } from '@heroicons/react/24/solid';
 
 const McQuiz = () => {
   const router = useRouter();
@@ -129,13 +130,17 @@ const McQuiz = () => {
         {showScore ? (
           <div className="text-center">
             <h2 className="text-2xl md:text-3xl font-bold text-[#D6001C] mb-4">¡Quiz Completado!</h2>
-            <p className="text-xl md:text-2xl mb-6">
-              Tu puntuación: {score} de {questions.length}
-            </p>
+            <div className="flex items-center justify-center gap-2 mb-6">
+              <TrophyIcon className="w-8 h-8 text-[#FFCC00]" />
+              <p className="text-xl md:text-2xl">
+                Tu puntuación: {score} de {questions.length}
+              </p>
+            </div>
             <button
               onClick={handleReturnToMenu}
-              className="w-full md:w-auto bg-[#D6001C] text-white font-bold py-3 px-8 rounded-lg hover:bg-[#B30000] transition-colors"
+              className="w-full md:w-auto bg-[#D6001C] text-white font-bold py-3 px-8 rounded-lg hover:bg-[#B30000] transition-colors flex items-center justify-center gap-2"
             >
+              <ArrowLeftIcon className="w-5 h-5" />
               Regresar al menú
             </button>
           </div>
@@ -145,8 +150,11 @@ const McQuiz = () => {
               <h2 className="text-xl md:text-2xl font-bold text-[#D6001C] mb-2 md:mb-0">
                 Pregunta {currentQuestion + 1} de {questions.length}
               </h2>
-              <div className="text-lg md:text-xl font-bold text-[#FFCC00]">
-                Tiempo: {timeLeft}s
+              <div className="flex items-center gap-2">
+                <ClockIcon className="w-6 h-6 text-[#FFCC00]" />
+                <span className="text-lg md:text-xl font-bold text-[#FFCC00]">
+                  Tiempo: {timeLeft}s
+                </span>
               </div>
             </div>
             <div className="mb-8">
@@ -156,7 +164,7 @@ const McQuiz = () => {
                   <button
                     key={index}
                     onClick={() => handleAnswerClick(option)}
-                    className={`p-3 md:p-4 rounded-lg text-left transition-colors ${
+                    className={`p-3 md:p-4 rounded-lg text-left transition-colors flex items-center justify-between ${
                       selectedAnswer === option
                         ? option === questions[currentQuestion].correctAnswer
                           ? 'bg-green-500 text-white'
@@ -165,7 +173,12 @@ const McQuiz = () => {
                     }`}
                     disabled={selectedAnswer !== null}
                   >
-                    {option}
+                    <span>{option}</span>
+                    {selectedAnswer === option && (
+                      option === questions[currentQuestion].correctAnswer
+                        ? <CheckCircleIcon className="w-6 h-6" />
+                        : <XCircleIcon className="w-6 h-6" />
+                    )}
                   </button>
                 ))}
               </div>
@@ -174,7 +187,7 @@ const McQuiz = () => {
               <div className="text-center">
                 <button
                   onClick={handleNextQuestion}
-                  className="w-full md:w-auto bg-[#FFCC00] text-[#D6001C] font-bold py-3 px-8 rounded-lg hover:bg-[#FFD700] transition-colors"
+                  className="w-full md:w-auto bg-[#FFCC00] text-[#D6001C] font-bold py-3 px-8 rounded-lg hover:bg-[#FFD700] transition-colors flex items-center justify-center gap-2"
                 >
                   {currentQuestion + 1 === questions.length ? 'Finalizar' : 'Siguiente'}
                 </button>
