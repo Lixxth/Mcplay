@@ -14,13 +14,6 @@ const GamesSection = () => {
     },
     {
       id: 2,
-      title: 'McMemory',
-      description: 'Encuentra las parejas de hamburguesas',
-      image: '/games/memory.png',
-      path: '/games/memory'
-    },
-    {
-      id: 3,
       title: 'McQuiz',
       description: 'Pon a prueba tus conocimientos',
       image: '/games/quiz.png',

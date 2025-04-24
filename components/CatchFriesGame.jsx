@@ -2,10 +2,14 @@
 
 import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 
 const CatchFriesGame = () => {
+  const router = useRouter();
   const [score, setScore] = useState(0);
   const [gameOver, setGameOver] = useState(false);
+  const [showReward, setShowReward] = useState(false);
+  const [chestOpen, setChestOpen] = useState(false);
   const [timeLeft, setTimeLeft] = useState(30); // 30 segundos de juego
   const [fries, setFries] = useState([]);
   const [boxPosition, setBoxPosition] = useState(50); // posición inicial del box
@@ -56,6 +60,8 @@ const CatchFriesGame = () => {
   const startGame = () => {
     setScore(0);
     setGameOver(false);
+    setShowReward(false);
+    setChestOpen(false);
     setTimeLeft(30);
     setFries([]);
     setBoxPosition(50);
@@ -85,6 +91,20 @@ const CatchFriesGame = () => {
     gameLoopRef.current = { fryInterval, gameInterval, timer };
   };
 
+  // Función para mostrar la recompensa
+  const showRewardScreen = () => {
+    setShowReward(true);
+    // Abrir el cofre después de 1 segundo
+    setTimeout(() => {
+      setChestOpen(true);
+    }, 1000);
+  };
+
+  // Función para regresar al menú principal
+  const handleReturnToMenu = () => {
+    router.push('/home');
+  };
+
   // Limpiar intervalos al desmontar
   useEffect(() => {
     return () => {
@@ -105,18 +125,67 @@ const CatchFriesGame = () => {
         </p>
       </div>
 
-      {gameOver ? (
+      {showReward ? (
+        <div className="text-center">
+          <div className="relative w-64 h-64 mb-8">
+            <div className={`absolute inset-0 transition-transform duration-1000 ${chestOpen ? 'scale-110' : 'scale-100'}`}>
+              <Image
+                src={chestOpen ? "/chest-open.png" : "/chest-closed.png"}
+                alt="Cofre de recompensa"
+                fill
+                className="object-contain"
+              />
+            </div>
+            {chestOpen && (
+              <div className="absolute inset-0 animate-bounce">
+                <Image
+                  src="/prize.png"
+                  alt="Premio"
+                  fill
+                  className="object-contain"
+                />
+              </div>
+            )}
+          </div>
+          <h2 className="text-2xl font-bold text-[#D6001C] mb-4">
+            ¡Felicidades!
+          </h2>
+          <p className="text-xl mb-4">Has ganado {score} puntos</p>
+          <div className="flex gap-4 justify-center">
+            <button
+              onClick={startGame}
+              className="bg-[#FFCC00] text-[#D6001C] font-bold py-2 px-6 rounded-lg hover:bg-[#FFD700] transition-colors"
+            >
+              Jugar de nuevo
+            </button>
+            <button
+              onClick={handleReturnToMenu}
+              className="bg-[#D6001C] text-white font-bold py-2 px-6 rounded-lg hover:bg-[#B30000] transition-colors"
+            >
+              Regresar al menú
+            </button>
+          </div>
+        </div>
+      ) : gameOver ? (
         <div className="text-center">
           <h2 className="text-2xl font-bold text-[#D6001C] mb-4">
             ¡Juego Terminado!
           </h2>
           <p className="text-xl mb-4">Puntuación final: {score}</p>
-          <button
-            onClick={startGame}
-            className="bg-[#FFCC00] text-[#D6001C] font-bold py-2 px-6 rounded-lg hover:bg-[#FFD700] transition-colors"
-          >
-            Jugar de nuevo
-          </button>
+          <div className="flex gap-4 justify-center">
+            <button
+              onClick={showRewardScreen}
+              className="bg-[#FFCC00] text-[#D6001C] font-bold py-2 px-6 rounded-lg hover:bg-[#FFD700] transition-colors"
+            >
+              Ver Recompensa
+            </button>
+            <button
+              onClick={handleReturnToMenu}
+              className="bg-[#D6001C] text-white font-bold py-2 px-6 rounded-lg hover:bg-[#B30000] transition-colors"
+            >
+              Regresar al menú
+            </button>
+          </div>
         </div>
       ) : (
         <div
