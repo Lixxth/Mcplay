@@ -221,7 +221,7 @@ const CatchFriesGame = () => {
               }}
             >
               <Image
-                src="/fries.png"
+                src="/Juegos/papa-removebg-preview.png"
                 alt="Papas fritas"
                 width={32}
                 height={32}
@@ -239,7 +239,7 @@ const CatchFriesGame = () => {
             }}
           >
             <Image
-              src="/mcdonalds-box.png"
+              src="/Juegos/cajamc-removebg-preview.png"
               alt="Caja de McDonald's"
               width={128}
               height={128}
