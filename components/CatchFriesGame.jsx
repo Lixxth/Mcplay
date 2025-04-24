@@ -117,17 +117,17 @@ const CatchFriesGame = () => {
   return (
     <div className="min-h-screen bg-[#FFE5B4] flex flex-col items-center justify-center p-4">
       <div className="text-center mb-4">
-        <h1 className="text-3xl font-bold text-[#D6001C] mb-2">
+        <h1 className="text-2xl md:text-3xl font-bold text-[#D6001C] mb-2">
           ¡Atrapa las Papas!
         </h1>
-        <p className="text-xl font-bold text-[#FFCC00]">
+        <p className="text-lg md:text-xl font-bold text-[#FFCC00]">
           Puntos: {score} | Tiempo: {timeLeft}s
         </p>
       </div>
 
       {showReward ? (
-        <div className="text-center">
-          <div className="relative w-64 h-64 mb-8">
+        <div className="text-center w-full max-w-md">
+          <div className="relative w-48 h-48 md:w-64 md:h-64 mx-auto mb-8">
             <div className={`absolute inset-0 transition-transform duration-1000 ${chestOpen ? 'scale-110' : 'scale-100'}`}>
               <Image
                 src={chestOpen ? "/chest-open.png" : "/chest-closed.png"}
@@ -147,33 +147,33 @@ const CatchFriesGame = () => {
               </div>
             )}
           </div>
-          <h2 className="text-2xl font-bold text-[#D6001C] mb-4">
+          <h2 className="text-xl md:text-2xl font-bold text-[#D6001C] mb-4">
             ¡Felicidades!
           </h2>
-          <p className="text-xl mb-4">Has ganado {score} puntos</p>
+          <p className="text-lg md:text-xl mb-4">Has ganado {score} puntos</p>
           <button
             onClick={handleReturnToMenu}
-            className="bg-[#D6001C] text-white font-bold py-2 px-6 rounded-lg hover:bg-[#B30000] transition-colors"
+            className="w-full md:w-auto bg-[#D6001C] text-white font-bold py-3 px-8 rounded-lg hover:bg-[#B30000] transition-colors"
           >
             Regresar al menú
           </button>
         </div>
       ) : gameOver ? (
-        <div className="text-center">
-          <h2 className="text-2xl font-bold text-[#D6001C] mb-4">
+        <div className="text-center w-full max-w-md">
+          <h2 className="text-xl md:text-2xl font-bold text-[#D6001C] mb-4">
             ¡Juego Terminado!
           </h2>
-          <p className="text-xl mb-4">Puntuación final: {score}</p>
-          <div className="flex gap-4 justify-center">
+          <p className="text-lg md:text-xl mb-4">Puntuación final: {score}</p>
+          <div className="flex flex-col md:flex-row gap-4 justify-center">
             <button
               onClick={showRewardScreen}
-              className="bg-[#FFCC00] text-[#D6001C] font-bold py-2 px-6 rounded-lg hover:bg-[#FFD700] transition-colors"
+              className="w-full md:w-auto bg-[#FFCC00] text-[#D6001C] font-bold py-3 px-8 rounded-lg hover:bg-[#FFD700] transition-colors"
             >
               Ver Recompensa
             </button>
             <button
               onClick={handleReturnToMenu}
-              className="bg-[#D6001C] text-white font-bold py-2 px-6 rounded-lg hover:bg-[#B30000] transition-colors"
+              className="w-full md:w-auto bg-[#D6001C] text-white font-bold py-3 px-8 rounded-lg hover:bg-[#B30000] transition-colors"
             >
               Regresar al menú
             </button>
@@ -182,15 +182,23 @@ const CatchFriesGame = () => {
       ) : (
         <div
           ref={gameAreaRef}
-          className="relative w-full max-w-md h-[500px] bg-white rounded-lg overflow-hidden cursor-pointer"
+          className="relative w-full max-w-md h-[300px] md:h-[500px] bg-white rounded-lg overflow-hidden cursor-pointer"
           onMouseMove={handleMouseMove}
+          onTouchMove={(e) => {
+            e.preventDefault();
+            const touch = e.touches[0];
+            const rect = gameAreaRef.current.getBoundingClientRect();
+            const x = touch.clientX - rect.left;
+            const percentage = (x / rect.width) * 100;
+            setBoxPosition(Math.max(0, Math.min(100, percentage)));
+          }}
           onClick={!gameLoopRef.current ? startGame : undefined}
         >
           {/* Papas fritas cayendo */}
           {fries.map((fry) => (
             <div
               key={fry.id}
-              className="absolute w-8 h-8"
+              className="absolute w-6 h-6 md:w-8 md:h-8"
               style={{
                 left: `${fry.x}%`,
                 top: `${fry.y}%`,
@@ -209,7 +217,7 @@ const CatchFriesGame = () => {
 
           {/* Caja de McDonald's */}
           <div
-            className="absolute bottom-0 w-32 h-32"
+            className="absolute bottom-0 w-24 h-24 md:w-32 md:h-32"
             style={{
               left: `${boxPosition}%`,
               transform: 'translateX(-50%)',
