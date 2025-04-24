@@ -4,7 +4,6 @@ import React, { useState, useEffect } from "react";
 import { isIOS } from "react-device-detect";
 import Link from "next/link";
 import { Toaster, toast } from "react-hot-toast";
-import Image from "next/image";
 
 const OfflineButton = ({ className }) => {
   const [showInstallButton, setShowInstallButton] = useState(false);
@@ -100,19 +99,19 @@ const OfflineButton = ({ className }) => {
             <div className="space-y-4">
               <div className="flex items-start gap-3">
                 <div className="w-8 h-8 bg-[#FFCC00] rounded-full flex items-center justify-center text-white font-bold">1</div>
-                <p className="text-gray-700">Abre Safari (no Chrome ni otros navegadores)</p>
+                <p className="text-gray-700">Abre el navegador Safari en tu dispositivo iOS.</p>
               </div>
               <div className="flex items-start gap-3">
                 <div className="w-8 h-8 bg-[#FFCC00] rounded-full flex items-center justify-center text-white font-bold">2</div>
-                <p className="text-gray-700">Toca el ícono de compartir <span className="text-[#D6001C]">⎋</span> en la parte inferior</p>
+                <p className="text-gray-700">Toca el ícono de compartir &quot;⎋&quot; en la parte inferior</p>
               </div>
               <div className="flex items-start gap-3">
                 <div className="w-8 h-8 bg-[#FFCC00] rounded-full flex items-center justify-center text-white font-bold">3</div>
-                <p className="text-gray-700">Desplázate hacia abajo y selecciona "Añadir a pantalla de inicio"</p>
+                <p className="text-gray-700">Desplázate hacia abajo y selecciona &quot;Añadir a pantalla de inicio&quot;</p>
               </div>
               <div className="flex items-start gap-3">
                 <div className="w-8 h-8 bg-[#FFCC00] rounded-full flex items-center justify-center text-white font-bold">4</div>
-                <p className="text-gray-700">Toca "Añadir" en la esquina superior derecha</p>
+                <p className="text-gray-700">Toca &quot;Añadir&quot; en la esquina superior derecha</p>
               </div>
             </div>
             <div className="mt-6 flex justify-end">
