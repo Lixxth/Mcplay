@@ -19,7 +19,7 @@ const ButtonAccount = () => {
   const handleSignOut = () => {
     signOut({ callbackUrl: "/" });
   };
-  const handleBilling = async () => {
+  const handleBilling = async () => { home
     setIsLoading(true);
 
     try {
