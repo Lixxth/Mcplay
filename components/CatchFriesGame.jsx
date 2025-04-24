@@ -151,20 +151,12 @@ const CatchFriesGame = () => {
             ¡Felicidades!
           </h2>
           <p className="text-xl mb-4">Has ganado {score} puntos</p>
-          <div className="flex gap-4 justify-center">
-            <button
-              onClick={startGame}
-              className="bg-[#FFCC00] text-[#D6001C] font-bold py-2 px-6 rounded-lg hover:bg-[#FFD700] transition-colors"
-            >
-              Jugar de nuevo
-            </button>
-            <button
-              onClick={handleReturnToMenu}
-              className="bg-[#D6001C] text-white font-bold py-2 px-6 rounded-lg hover:bg-[#B30000] transition-colors"
-            >
-              Regresar al menú
-            </button>
-          </div>
+          <button
+            onClick={handleReturnToMenu}
+            className="bg-[#D6001C] text-white font-bold py-2 px-6 rounded-lg hover:bg-[#B30000] transition-colors"
+          >
+            Regresar al menú
+          </button>
         </div>
       ) : gameOver ? (
         <div className="text-center">
