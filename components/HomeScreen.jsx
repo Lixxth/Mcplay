@@ -64,12 +64,7 @@ const HomeScreen = () => {
         <div className="bg-white rounded-lg shadow-lg p-4 flex items-center justify-between">
           <div className="flex items-center gap-4">
             <div className="relative w-20 h-20">
-              <Image
-                src="/double-mcmuffin.png"
-                alt="Double McMuffin con Bacon"
-                fill
-                className="object-contain"
-              />
+            <img src="/imagesHome/combo-removebg-preview.png" alt="Prueba" width="100" />
             </div>
             <div>
               <h3 className="font-semibold">Double McMuffin con Bacon</h3>
@@ -101,12 +96,7 @@ const HomeScreen = () => {
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
               <div className="relative w-20 h-20">
-                <Image
-                  src="/combo.png"
-                  alt="Combo Especial"
-                  fill
-                  className="object-contain"
-                />
+              <img src="/imagesHome/mc_trio-removebg-preview.png" alt="Prueba" width="100" />
               </div>
               <div>
                 <h3 className="font-semibold">Combo Especial</h3>
