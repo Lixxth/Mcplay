@@ -1,7 +1,6 @@
 'use client';
 
 import Image from 'next/image';
-import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import ButtonSignin from './ButtonSignin';
 import OfflineButton from './OfflineButton';
@@ -45,7 +44,7 @@ const WelcomeScreen = () => {
         {/* Welcome text */}
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold text-black mb-4">
-            ¡Bienvenido a McDonald's!
+            ¡Bienvenido a McDonald&apos;s!
           </h1>
           <p className="text-lg text-gray-800">
             Tu experiencia deliciosa comienza aquí.
