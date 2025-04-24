@@ -9,14 +9,14 @@ const GamesSection = () => {
       id: 1,
       title: 'Atrapa las Papas',
       description: 'Atrapa las papas fritas en la caja de McDonald\'s',
-      image: '/games/catch-fries.png',
+      image: '/Juegos/atrapapaps.png',
       path: '/games/catch-fries'
     },
     {
       id: 2,
       title: 'McQuiz',
       description: 'Pon a prueba tus conocimientos',
-      image: '/games/quiz.png',
+      image: '/Juegos/atrapapaps.png',
       path: '/games/quiz'
     }
   ];
